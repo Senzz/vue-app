@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const state = {
     cityName: '广州',
     weatherDate:[],
-    apikey: '0df81e6fd1a14e54479b4375f5413421'
+    apikey: '*******'
 }
 
 const mutations = {
