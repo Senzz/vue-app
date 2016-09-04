@@ -12,8 +12,7 @@ App  with Vue.js
 
 ## How to run ##
 	# add your apikey
-在components/weather.vue 和 technology_news.vue 中数据中的 apikey
-修改成你的apikey <br/>
+在src/vuex/store.js 中 state 中修改成你的 apikey <br/>
 (可以去[APIStore](http://apistore.baidu.com/ "APIStore")那申请，很简单快速。）
 
     # install dependencies 
