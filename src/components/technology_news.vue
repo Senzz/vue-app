@@ -26,7 +26,7 @@
                 newsList: [],
                 loading: false,
                 page: 1,
-                apikey: '',
+                apikey: '**********',
             }
         },
         components: {
@@ -38,7 +38,7 @@
                     url: 'http://apis.baidu.com/txapi/keji/keji',
                     method: 'GET',
                     headers: {
-                        apikey: this.apikey
+                        apikey: this.apikey,
                     },
                     params: {
                         num: 5,

@@ -27,7 +27,7 @@
                 loading: false,
                 weatherCity:'',
                 weatherData:[],
-                apikey: '',
+                apikey: '****************',
             }
         },
         components: {
