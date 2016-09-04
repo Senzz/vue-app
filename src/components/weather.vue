@@ -27,6 +27,7 @@
                 loading: false,
                 weatherCity:'',
                 weatherData:[],
+                apikey: '',
             }
         },
         components: {
@@ -50,7 +51,7 @@
                 this.$http.get('http://apis.baidu.com/apistore/weatherservice/recentweathers',
                     {
                         headers: {
-                            apikey: '*************************',
+                            apikey: this.apikey
                         },
                         params: {
                             cityname: this.searchCity
