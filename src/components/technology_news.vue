@@ -37,7 +37,7 @@
                     url: 'http://apis.baidu.com/txapi/keji/keji',
                     method: 'GET',
                     headers: {
-                        apikey: '0df81e6fd1a14e54479b4375f5413421'
+                        apikey: '*******************************'
                     },
                     params: {
                         num: 5,

@@ -50,7 +50,7 @@
                 this.$http.get('http://apis.baidu.com/apistore/weatherservice/recentweathers',
                     {
                         headers: {
-                            apikey: '0df81e6fd1a14e54479b4375f5413421',
+                            apikey: '*************************',
                         },
                         params: {
                             cityname: this.searchCity
