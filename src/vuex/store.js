@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 const state = {
     cityName: '广州',
-    weatherDate:[]
+    weatherDate:[],
+    apikey: '0df81e6fd1a14e54479b4375f5413421'
 }
 
 const mutations = {

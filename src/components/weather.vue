@@ -19,6 +19,7 @@
 
 <script>
     import loading from './loading.vue'
+    import { getApiKey } from '../vuex/getters'
 
     export default {
         data() {
@@ -27,31 +28,22 @@
                 loading: false,
                 weatherCity:'',
                 weatherData:[],
-                apikey: '****************',
             }
         },
         components: {
           loading
         },
-        // vuex: {
-        //     actions: {
-        //         setCityName: function({ dispatch }, value){
-        //             dispatch('SET_CITY', value);
-        //         },
-        //         setWeatherData: function({ dispatch }, arr){
-        //             dispatch('SET_WEATHERDATA', arr);
-        //         }
-        //     },
-        //     getters: {
-        //         getWeatherData: state => state.weatherData
-        //     }
-        // },  
+        vuex: {
+            getters: {
+                getApiKey: getApiKey
+            }
+        },  
         methods: {
             getWeather(){
                 this.$http.get('http://apis.baidu.com/apistore/weatherservice/recentweathers',
                     {
                         headers: {
-                            apikey: this.apikey
+                            apikey: this.getApiKey
                         },
                         params: {
                             cityname: this.searchCity

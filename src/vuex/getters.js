@@ -1,3 +1,3 @@
-export function getCount (state) {
-    return state.count;
+export function getApiKey (state) {
+    return state.apikey;
 }

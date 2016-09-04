@@ -4,7 +4,7 @@
             <nav class='nav'>
                 <a v-link="{name: 'weather', activeClass: 'a_active'}">天气查询</a>
                 <a v-link="{name: 'technology', activeClass: 'a_active'}">科技新闻</a>
-                <a v-link="{name: 'bar', activeClass: 'a_active'}">待定</a>
+                <a v-link="{name: 'about', activeClass: 'a_active'}">关于</a>
             </nav>
         </header>
         <router-view keep-alive></router-view>

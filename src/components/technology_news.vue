@@ -19,6 +19,7 @@
 
 <script>
     import loading from './loading.vue'
+    import { getApiKey } from '../vuex/getters'
 
     export default {
         data() {
@@ -26,7 +27,11 @@
                 newsList: [],
                 loading: false,
                 page: 1,
-                apikey: '**********',
+            }
+        },
+        vuex: {
+            getters: {
+                getApiKey: getApiKey
             }
         },
         components: {
@@ -38,7 +43,7 @@
                     url: 'http://apis.baidu.com/txapi/keji/keji',
                     method: 'GET',
                     headers: {
-                        apikey: this.apikey,
+                        apikey: this.getApiKey,
                     },
                     params: {
                         num: 5,

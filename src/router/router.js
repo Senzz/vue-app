@@ -18,10 +18,10 @@ router.map({
             require(['../components/technology_news.vue'], resolve)
         }
     },
-    '/bar': {
-        name: 'bar',
+    '/about': {
+        name: 'about',
         component: (resolve) => {
-            require(['../components/bar.vue'], resolve)
+            require(['../components/about.vue'], resolve)
         }
     }
 })
