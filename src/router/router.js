@@ -1,29 +1,20 @@
-import Vue from 'vue'
+
 import VueRouter from 'vue-router'
 
-Vue.use(VueRouter)
+//components
+const weather = require('../components/weather.vue');
+const news = require('../components/news.vue');
+const about = require('../components/about.vue');
 
-const router = new VueRouter({})
-
-router.map({
-    '/weather': {
-        name: 'weather',
-        component: (resolve) => {
-            require(['../components/weather.vue'], resolve)
-        }
-    },
-    '/technology': {
-        name: 'technology',
-        component: (resolve) => {
-            require(['../components/technology_news.vue'], resolve)
-        }
-    },
-    '/about': {
-        name: 'about',
-        component: (resolve) => {
-            require(['../components/about.vue'], resolve)
-        }
-    }
+const router = new VueRouter({
+    mode: 'history',
+    base: __dirname,
+    routes: [
+        { path: '/weather', component: weather },
+        { path: '/news', component: news },
+        { path: '/about', component: about }
+    ]
 })
+
 
 export default router

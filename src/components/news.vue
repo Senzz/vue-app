@@ -1,13 +1,13 @@
 <template>
     <div class='newsList'>
         <article class='new_every' v-for='item of newsList' >
-            <a href="{{item.url}}">
+            <a :href="item.url">
                 <div class='title'>
                     <p>{{item.title}}</p>
                     <p class='date'>{{item.ctime}}</p>
                 </div>
                 <div class='img'>
-                    <img :src="item.picUrl" alt="{{item.title}}" />
+                    <img :src="item.picUrl" :alt="item.title" />
                 </div>
             </a>
         </article>
@@ -19,7 +19,7 @@
 
 <script>
     import loading from './loading.vue'
-    import { getApiKey } from '../vuex/getters'
+    import apikey from './../apikey.js'
 
     export default {
         data() {
@@ -27,11 +27,7 @@
                 newsList: [],
                 loading: false,
                 page: 1,
-            }
-        },
-        vuex: {
-            getters: {
-                getApiKey: getApiKey
+                apikey: apikey
             }
         },
         components: {
@@ -40,13 +36,13 @@
         methods: {
             getTechnologyNews() {
                 this.$http({
-                    url: 'http://apis.baidu.com/txapi/keji/keji',
+                    url: 'http://apis.baidu.com/txapi/world/world',
                     method: 'GET',
                     headers: {
-                        apikey: this.getApiKey,
+                        apikey: this.apikey,
                     },
                     params: {
-                        num: 5,
+                        num: 5,                //每次获取的数量
                         page: this.page++,     //每次加一
                     },
                     before: function(){
@@ -56,8 +52,10 @@
                 .then(function(response){
                     this.loading = false;
                     const data = response.data;
+
                     //判断是否成功
-                    if(data.msg = 'success'){
+                    console.log(data)
+                    if(data.msg == 'success'){
                         //第一页
                         if(this.page === 0){
                             this.newsList = data.newslist;
@@ -75,13 +73,9 @@
                 })
             }
         },
-        ready() {
-            const newsList = JSON.parse(window.sessionStorage.getItem('technology_news'));
-            if(newsList){
-                this.newsList = newsList;
-            }else{
-                this.getTechnologyNews();
-            }
+        beforeMount() {
+            this.getTechnologyNews();
+
         }
     }
 </script>
@@ -95,18 +89,20 @@
     .new_every{
         width: 100%;
         margin:0.7rem 0;
-        padding:0.1rem; 
+        padding:0.1rem;
+        height:8rem;
         box-sizing:border-box;
         background-color:#fff;
     }
     .new_every>a {
         display:flex;
         color:#000;
+        height:100%;
     }
     .new_every .title{
         width:70%;
         padding-right:0.5rem;
-        font-size:0.6rem;
+        font-size:1.2rem;
         position:relative;
     }
     .new_every .title p.date{
@@ -118,14 +114,15 @@
         flex:1;
     }
     .new_every .img img{
-        width:100%;
-        height:auto;
+        width:60%;
+        height:100%;
         display:block;
+        float:right;
     }
     .more_btn{
         margin-top:0.5rem;
         width:100%;
-        height:2rem;
+        height:2.5rem;
         background-color:#252e39;
         border-radius:10px;
         color:#fff;

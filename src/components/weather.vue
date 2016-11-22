@@ -19,7 +19,7 @@
 
 <script>
     import loading from './loading.vue'
-    import { getApiKey } from '../vuex/getters'
+    import apikey from './../apikey.js'
 
     export default {
         data() {
@@ -28,22 +28,18 @@
                 loading: false,
                 weatherCity:'',
                 weatherData:[],
+                apikey: apikey
             }
         },
         components: {
           loading
-        },
-        vuex: {
-            getters: {
-                getApiKey: getApiKey
-            }
-        },  
+        }, 
         methods: {
             getWeather(){
                 this.$http.get('http://apis.baidu.com/apistore/weatherservice/recentweathers',
                     {
                         headers: {
-                            apikey: this.getApiKey
+                            apikey: this.apikey
                         },
                         params: {
                             cityname: this.searchCity
@@ -62,12 +58,6 @@
                         if(retData.forecast){
                             this.weatherCity = retData.city;
                             this.weatherData = retData.forecast;
-                            //把今日的数据加入到头部
-                            this.weatherData.unshift(retData.today);
-                            //存到secctionStorage
-                            window.sessionStorage.setItem('weatherCity', this.weatherCity);
-                            //因为setItem不能存储数组，所以使用JSON.stringify
-                            window.sessionStorage.setItem('weatherData', JSON.stringify(this.weatherData));
                         }else{
                             this.getWeather();
                         }
@@ -80,16 +70,8 @@
                 });
             }
         },
-        ready() {
-            //是否直接用sessionStorage数据，防止重现渲染
-            const sessionStorage = window.sessionStorage;
-            if(!sessionStorage.getItem('weatherCity')){
-                this.getWeather();
-            }else{
-                this.weatherCity = sessionStorage.getItem('weatherCity');
-                this.weatherData = JSON.parse(sessionStorage.getItem('weatherData'));
-            }
-            
+        beforeMount(){
+            this.getWeather();
         },
     }
 </script>
@@ -102,9 +84,11 @@
     }
     .search_input{
         width:90%;
-        height:1rem;
+        height:3rem;
         padding-left:0.5rem;
         margin-bottom:1rem;
+        border:0.3rem solid #ccc;
+        font-size:2rem;
     }
     .city_name{
         font-size:2rem;
@@ -122,9 +106,9 @@
         width:100%;
         box-sizing:border-box;
         margin:0.1rem;
-        padding:1.2rem;
+        padding:2.5rem 1.2rem;
         background:rgb(81,182,176);
-        font-size:0.8rem;
+        font-size:1.2rem;
     }
     .weatherData_every>*{
         margin:0.3rem  0;

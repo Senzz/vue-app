@@ -1,13 +1,13 @@
-
-
 import Vue from "vue"
 import VueResource from 'vue-resource'
+import VueRouter from 'vue-router'
+
 import router from './router/router.js'
-import { sync } from 'vuex-router-sync'
+
 
 //components
 import app from './components/index.vue'
-import store from './vuex/store'
+
 
 
 
@@ -17,6 +17,9 @@ Vue.config.devtools = true;
 
 Vue.use(VueResource)
 
-sync(store, router)
+Vue.use(VueRouter);
 
-router.start(app,'#app');
+new Vue({
+	router,
+	render: h => h(app)
+}).$mount('#app');

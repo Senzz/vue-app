@@ -2,28 +2,34 @@
     <div class='container'>
         <header>
             <nav class='nav'>
-                <a v-link="{name: 'weather', activeClass: 'a_active'}">天气查询</a>
-                <a v-link="{name: 'technology', activeClass: 'a_active'}">科技新闻</a>
-                <a v-link="{name: 'about', activeClass: 'a_active'}">关于</a>
+                <router-link to="/weather">天气查询</router-link>
+                <router-link to="/news">科技新闻</router-link>
+                <router-link to="/about">关于</router-link>
             </nav>
         </header>
-        <router-view keep-alive></router-view>
+        <!-- 缓存 -->
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
     </div>
 </template>
 
 <script>
-    import store from '../vuex/store'
+
 
     export default {
 
-        ready() {
+        beforeMount() {
             //默认为weather
-            this.$router.go('weather');
+            this.$router.push('weather');
         },
-        store,
+
     }
 </script>
 <style>
+    .container{
+        padding:0.5rem;
+    }
     html{
         font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
     }
@@ -36,20 +42,22 @@
     }
     header .nav{
         display:flex;
-        height:2rem;
+        height:4rem;
+        font-size:1.5rem;
     }
-    header .nav>a{
+    header .nav > a{
         display:block;
         border:0.1rem solid;
-        height:2rem;
-        line-height:2rem;
+        height:100%;
+        line-height:4rem;
         flex:1;
         text-align:center;
         background:#63524f;
         color:#fff;
         border-radius:0.4rem;
     }
-    header .nav>a.a_active{
-        background-color:red;
+    /*变色效果*/
+    header .nav .router-link-active{
+        background-color:#da0041;
     }
 </style>

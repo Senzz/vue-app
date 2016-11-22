@@ -33,13 +33,13 @@
 <style>
     .about{
         margin:2rem 0.3rem;
-        padding:1rem 0;
+        padding:6rem 0;
         border-top:0.3rem solid #c7543d;
         text-align:center;
         background:#6bdd9c;
+        font-size:1.2rem;
     }
     .about p{
-        font-size:0.7rem;
         margin:1rem 0;
     }
 </style>
