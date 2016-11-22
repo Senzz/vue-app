@@ -21,6 +21,6 @@ App  with Vue.js
     npm install
     
     # run server
-    npm run build 
+    npm run dev
   
 
