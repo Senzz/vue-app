@@ -2,6 +2,7 @@
     <div class='container'>
         <header>
             <nav class='nav'>
+                <router-link to='/chat'>聊天室</router-link>
                 <router-link to="/weather">天气查询</router-link>
                 <router-link to="/news">科技新闻</router-link>
                 <router-link to="/about">关于</router-link>
@@ -19,11 +20,10 @@
 
     export default {
 
-        beforeMount() {
-            //默认为weather
-            this.$router.push('weather');
+        created() {
+            //默认为chat
+            this.$router.push('news');
         },
-
     }
 </script>
 <style>
@@ -42,15 +42,16 @@
     }
     header .nav{
         display:flex;
-        height:4rem;
-        font-size:1.5rem;
+
+        height:3rem;
+        font-size:1.3rem;
     }
     header .nav > a{
         display:block;
         border:0.1rem solid;
         height:100%;
-        line-height:4rem;
-        flex:1;
+        line-height:3rem;
+        flex:auto;
         text-align:center;
         background:#63524f;
         color:#fff;

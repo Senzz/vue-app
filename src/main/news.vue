@@ -18,7 +18,7 @@
 
 
 <script>
-    import loading from './loading.vue'
+    import loading from './../components/loading.vue'
     import apikey from './../apikey.js'
 
     export default {
@@ -114,7 +114,7 @@
         flex:1;
     }
     .new_every .img img{
-        width:60%;
+        width:100%;
         height:100%;
         display:block;
         float:right;

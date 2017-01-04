@@ -6,8 +6,7 @@ import router from './router/router.js'
 
 
 //components
-import app from './components/index.vue'
-
+import app from './index.vue'
 
 
 

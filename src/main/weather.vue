@@ -18,7 +18,7 @@
 </template> 
 
 <script>
-    import loading from './loading.vue'
+    import loading from './../components/loading.vue'
     import apikey from './../apikey.js'
 
     export default {
@@ -32,7 +32,7 @@
             }
         },
         components: {
-          loading
+            loading
         }, 
         methods: {
             getWeather(){
